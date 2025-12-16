@@ -1,0 +1,177 @@
+// Prisma schema for RETORNO Marketplace
+// MVP: Connecting drivers with available return trips to clients needing freight
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+}
+
+enum UserRole {
+  DRIVER
+  CLIENT
+  ADMIN
+}
+
+enum VehicleType {
+  TRUCK_SMALL       // Caminhão 3/4
+  TRUCK_MEDIUM      // Caminhão Toco
+  TRUCK_LARGE       // Caminhão Truck
+  TRUCK_SEMI        // Carreta Simples
+  TRUCK_BI          // Bi-trem
+  TRUCK_RODOTREM    // Rodotrem
+  VAN               // Van/Furgão
+  PICKUP            // Pickup
+  OTHER             // Outro
+}
+
+enum AvailabilityStatus {
+  ACTIVE
+  INACTIVE
+  COMPLETED
+}
+
+model User {
+  id                String               @id @default(cuid())
+  email             String               @unique
+  password          String
+  name              String
+  phone             String?
+  role              UserRole             @default(CLIENT)
+  whatsapp          String?
+  cpfCnpj           String?              @unique
+  
+  // Driver-specific fields
+  driverLicense     String?
+  companyName       String?
+  
+  // Timestamps
+  createdAt         DateTime             @default(now())
+  updatedAt         DateTime             @updatedAt
+  
+  // Relations
+  vehicles          Vehicle[]
+  availabilities    ReturnAvailability[]
+  chatsAsParticipant1 Chat[]             @relation("ChatParticipant1")
+  chatsAsParticipant2 Chat[]             @relation("ChatParticipant2")
+  messages          Message[]
+  
+  @@index([email])
+  @@index([role])
+}
+
+model Vehicle {
+  id                String               @id @default(cuid())
+  userId            String
+  user              User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  type              VehicleType
+  brand             String
+  model             String
+  year              Int
+  plate             String               @unique
+  capacity          Float                // Capacidade em toneladas
+  description       String?
+  
+  // Timestamps
+  createdAt         DateTime             @default(now())
+  updatedAt         DateTime             @updatedAt
+  
+  // Relations
+  photos            VehiclePhoto[]
+  availabilities    ReturnAvailability[]
+  
+  @@index([userId])
+  @@index([type])
+}
+
+model VehiclePhoto {
+  id                String               @id @default(cuid())
+  vehicleId         String
+  vehicle           Vehicle              @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+  
+  url               String
+  isPrimary         Boolean              @default(false)
+  
+  // Timestamps
+  createdAt         DateTime             @default(now())
+  
+  @@index([vehicleId])
+}
+
+model ReturnAvailability {
+  id                String               @id @default(cuid())
+  userId            String
+  user              User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  vehicleId         String
+  vehicle           Vehicle              @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+  
+  // Route information
+  originCity        String
+  originState       String
+  destinationCity   String
+  destinationState  String
+  
+  // Availability details
+  availableDate     DateTime
+  flexibleDates     Boolean              @default(false)
+  status            AvailabilityStatus   @default(ACTIVE)
+  
+  // Pricing and capacity
+  priceEstimate     Float?               // Estimativa de preço (opcional no MVP)
+  availableCapacity Float                // Capacidade disponível em toneladas
+  
+  // Additional info
+  description       String?
+  observations      String?
+  
+  // Timestamps
+  createdAt         DateTime             @default(now())
+  updatedAt         DateTime             @updatedAt
+  
+  @@index([userId])
+  @@index([vehicleId])
+  @@index([status])
+  @@index([originCity, originState])
+  @@index([destinationCity, destinationState])
+  @@index([availableDate])
+}
+
+model Chat {
+  id                String               @id @default(cuid())
+  participant1Id    String
+  participant1      User                 @relation("ChatParticipant1", fields: [participant1Id], references: [id], onDelete: Cascade)
+  participant2Id    String
+  participant2      User                 @relation("ChatParticipant2", fields: [participant2Id], references: [id], onDelete: Cascade)
+  
+  // Timestamps
+  createdAt         DateTime             @default(now())
+  updatedAt         DateTime             @updatedAt
+  
+  // Relations
+  messages          Message[]
+  
+  @@unique([participant1Id, participant2Id])
+  @@index([participant1Id])
+  @@index([participant2Id])
+}
+
+model Message {
+  id                String               @id @default(cuid())
+  chatId            String
+  chat              Chat                 @relation(fields: [chatId], references: [id], onDelete: Cascade)
+  senderId          String
+  sender            User                 @relation(fields: [senderId], references: [id], onDelete: Cascade)
+  
+  content           String
+  read              Boolean              @default(false)
+  
+  // Timestamps
+  createdAt         DateTime             @default(now())
+  
+  @@index([chatId])
+  @@index([senderId])
+  @@index([createdAt])
+}
