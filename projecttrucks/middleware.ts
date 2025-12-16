@@ -1,32 +1,28 @@
+import { auth } from "@/lib/auth/auth-options"
 import { NextResponse } from "next/server"
-import type { NextRequest } from "next/server"
 
-export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl
+export default auth((req) => {
+  const { pathname } = req.nextUrl
+  const isAuth = !!req.auth
   
-  // Check if user has session cookie
-  const sessionToken = request.cookies.get("next-auth.session-token") || 
-                       request.cookies.get("__Secure-next-auth.session-token")
-  
-  const isAuth = !!sessionToken
   const isAuthPage = pathname.startsWith("/login") || pathname.startsWith("/register")
   const isProtectedPage = pathname.startsWith("/dashboard")
   
   // Redirect authenticated users away from auth pages
   if (isAuthPage && isAuth) {
-    return NextResponse.redirect(new URL("/dashboard", request.url))
+    return NextResponse.redirect(new URL("/dashboard", req.url))
   }
   
   // Redirect unauthenticated users to login
   if (isProtectedPage && !isAuth) {
-    const from = pathname + (request.nextUrl.search || "")
+    const from = pathname + (req.nextUrl.search || "")
     return NextResponse.redirect(
-      new URL(`/login?from=${encodeURIComponent(from)}`, request.url)
+      new URL(`/login?from=${encodeURIComponent(from)}`, req.url)
     )
   }
   
   return NextResponse.next()
-}
+})
 
 export const config = {
   matcher: [

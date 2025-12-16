@@ -7,7 +7,17 @@ import { UserRole } from "@prisma/client"
 
 export default function RegisterPage() {
   const router = useRouter()
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<{
+    email: string
+    password: string
+    name: string
+    phone: string
+    role: UserRole
+    whatsapp: string
+    cpfCnpj: string
+    driverLicense: string
+    companyName: string
+  }>({
     email: "",
     password: "",
     name: "",
