@@ -23,6 +23,12 @@ npx prisma migrate dev --name init
 npx prisma generate
 ```
 
+### Step 3.1: Populate Database (Optional)
+```bash
+npm run db:seed
+```
+This will create test users, vehicles, and availability data.
+
 ### Step 4: Start Application
 ```bash
 npm run dev
