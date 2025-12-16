@@ -1,37 +1,32 @@
-import { withAuth } from "next-auth/middleware"
 import { NextResponse } from "next/server"
+import type { NextRequest } from "next/server"
 
-export default withAuth(
-  function middleware(req) {
-    const token = req.nextauth.token
-    const isAuth = !!token
-    const isAuthPage = req.nextUrl.pathname.startsWith("/login") || 
-                      req.nextUrl.pathname.startsWith("/register")
-    
-    if (isAuthPage) {
-      if (isAuth) {
-        return NextResponse.redirect(new URL("/dashboard", req.url))
-      }
-      return null
-    }
-
-    if (!isAuth) {
-      let from = req.nextUrl.pathname
-      if (req.nextUrl.search) {
-        from += req.nextUrl.search
-      }
-
-      return NextResponse.redirect(
-        new URL(`/login?from=${encodeURIComponent(from)}`, req.url)
-      )
-    }
-  },
-  {
-    callbacks: {
-      authorized: () => true,
-    },
+export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl
+  
+  // Check if user has session cookie
+  const sessionToken = request.cookies.get("next-auth.session-token") || 
+                       request.cookies.get("__Secure-next-auth.session-token")
+  
+  const isAuth = !!sessionToken
+  const isAuthPage = pathname.startsWith("/login") || pathname.startsWith("/register")
+  const isProtectedPage = pathname.startsWith("/dashboard")
+  
+  // Redirect authenticated users away from auth pages
+  if (isAuthPage && isAuth) {
+    return NextResponse.redirect(new URL("/dashboard", request.url))
   }
-)
+  
+  // Redirect unauthenticated users to login
+  if (isProtectedPage && !isAuth) {
+    const from = pathname + (request.nextUrl.search || "")
+    return NextResponse.redirect(
+      new URL(`/login?from=${encodeURIComponent(from)}`, request.url)
+    )
+  }
+  
+  return NextResponse.next()
+}
 
 export const config = {
   matcher: [
