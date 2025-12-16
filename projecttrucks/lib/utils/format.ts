@@ -1,4 +1,5 @@
 import { type ClassValue, clsx } from "clsx"
+import DOMPurify from "isomorphic-dompurify"
 
 export function cn(...inputs: ClassValue[]) {
   return clsx(inputs)
@@ -22,5 +23,10 @@ export function formatCurrency(value: number): string {
 }
 
 export function sanitizeInput(input: string): string {
-  return input.trim().replace(/<[^>]*>/g, '')
+  // Use DOMPurify for comprehensive XSS protection
+  const clean = DOMPurify.sanitize(input, {
+    ALLOWED_TAGS: [], // Strip all HTML tags
+    ALLOWED_ATTR: []  // Strip all attributes
+  })
+  return clean.trim()
 }

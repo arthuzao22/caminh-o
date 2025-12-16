@@ -26,6 +26,8 @@ export async function GET(req: NextRequest) {
       status: AvailabilityStatus.ACTIVE,
     }
 
+    // NOTE: For production with large datasets, consider implementing full-text search
+    // using PostgreSQL's tsvector or a dedicated search engine like Elasticsearch
     if (validatedParams.originCity) {
       where.originCity = {
         contains: validatedParams.originCity,

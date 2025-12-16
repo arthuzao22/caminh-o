@@ -5,6 +5,8 @@ import { UserRole } from "@prisma/client"
 import { writeFile, mkdir } from "fs/promises"
 import { join } from "path"
 
+// NOTE: For production, consider using cloud storage (S3, Cloudinary, etc.)
+// This implementation stores files in public directory for MVP simplicity
 const UPLOAD_DIR = join(process.cwd(), "public", "uploads", "vehicles")
 const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB
 const ALLOWED_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"]

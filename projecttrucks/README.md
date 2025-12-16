@@ -103,13 +103,15 @@ npx prisma migrate dev # Cria nova migration
 
 O sistema implementa:
 - ✅ Autenticação com NextAuth.js
-- ✅ Hash de senhas com bcryptjs
+- ✅ Hash de senhas com bcryptjs (12 rounds)
 - ✅ RBAC (Role-Based Access Control)
 - ✅ Proteção de rotas via middleware
 - ✅ Validação de dados com Zod
-- ✅ Sanitização de inputs
+- ✅ Sanitização de inputs com DOMPurify
 - ✅ Proteção de uploads (tipo e tamanho)
 - ✅ CSRF protection via NextAuth
+- ⚠️ Upload de fotos armazenado localmente (use cloud storage em produção)
+- ⚠️ Busca com contains (considere full-text search para produção em larga escala)
 
 ## 📱 Funcionalidades por Papel
 
