@@ -110,13 +110,13 @@ export default function SearchPage() {
 
   return (
     <div className="max-w-7xl mx-auto">
-      <h1 className="text-3xl font-bold text-gray-900 mb-8">Buscar Fretes de Retorno</h1>
+      <h1 className="text-3xl font-bold text-black mb-8">Buscar Fretes de Retorno</h1>
 
       {/* Search Filters */}
       <form onSubmit={handleSearch} className="bg-white rounded-lg shadow p-6 mb-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-black mb-2">
               Origem - Cidade
             </label>
             <input
@@ -129,7 +129,7 @@ export default function SearchPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-black mb-2">
               Origem - Estado (UF)
             </label>
             <input
@@ -143,7 +143,7 @@ export default function SearchPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-black mb-2">
               Destino - Cidade
             </label>
             <input
@@ -156,7 +156,7 @@ export default function SearchPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-black mb-2">
               Destino - Estado (UF)
             </label>
             <input
@@ -170,7 +170,7 @@ export default function SearchPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-black mb-2">
               Data a partir de
             </label>
             <input
@@ -182,7 +182,7 @@ export default function SearchPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-black mb-2">
               Capacidade mínima (t)
             </label>
             <input
@@ -209,11 +209,11 @@ export default function SearchPage() {
       {/* Results */}
       {loading ? (
         <div className="flex justify-center py-12">
-          <div className="text-lg text-gray-600">Carregando...</div>
+          <div className="text-lg text-black">Carregando...</div>
         </div>
       ) : availabilities.length === 0 ? (
         <div className="bg-white rounded-lg shadow p-12 text-center">
-          <p className="text-gray-600">Nenhuma disponibilidade encontrada com os filtros aplicados.</p>
+          <p className="text-black">Nenhuma disponibilidade encontrada com os filtros aplicados.</p>
         </div>
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -226,8 +226,8 @@ export default function SearchPage() {
                   className="w-full h-48 object-cover"
                 />
               ) : (
-                <div className="w-full h-48 bg-gray-200 flex items-center justify-center">
-                  <svg className="w-16 h-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-full h-48 bg-gray-100 flex items-center justify-center">
+                  <svg className="w-16 h-16 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
                 </div>
@@ -235,34 +235,34 @@ export default function SearchPage() {
 
               <div className="p-6">
                 <div className="mb-4">
-                  <h3 className="text-lg font-semibold text-gray-900">
+                  <h3 className="text-lg font-semibold text-black">
                     {availability.originCity}/{availability.originState} → {availability.destinationCity}/{availability.destinationState}
                   </h3>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-black">
                     Data: {formatDate(availability.availableDate)}
                   </p>
                 </div>
 
                 <div className="space-y-2 mb-4">
                   <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">Veículo:</span>
+                    <span className="text-black">Veículo:</span>
                     <span className="font-medium">
                       {VEHICLE_TYPE_LABELS[availability.vehicle.type]}
                     </span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">Capacidade:</span>
+                    <span className="text-black">Capacidade:</span>
                     <span className="font-medium">{availability.availableCapacity}t</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">Motorista:</span>
+                    <span className="text-black">Motorista:</span>
                     <span className="font-medium">
                       {availability.user.companyName || availability.user.name}
                     </span>
                   </div>
                   {availability.priceEstimate && (
                     <div className="flex justify-between text-sm">
-                      <span className="text-gray-600">Valor estimado:</span>
+                      <span className="text-black">Valor estimado:</span>
                       <span className="font-medium text-green-600">
                         R$ {availability.priceEstimate.toFixed(2)}
                       </span>
@@ -271,7 +271,7 @@ export default function SearchPage() {
                 </div>
 
                 {availability.description && (
-                  <p className="text-sm text-gray-600 mb-4">{availability.description}</p>
+                  <p className="text-sm text-black mb-4">{availability.description}</p>
                 )}
 
                 <div className="flex gap-2">

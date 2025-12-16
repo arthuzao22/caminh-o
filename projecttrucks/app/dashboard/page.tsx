@@ -24,14 +24,14 @@ export default function DashboardPage() {
   if (status === "loading") {
     return (
       <div className="flex justify-center items-center min-h-screen">
-        <div className="text-lg text-gray-600">Carregando...</div>
+        <div className="text-lg text-black">Carregando...</div>
       </div>
     )
   }
 
   return (
     <div className="max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold text-gray-900 mb-8">
+      <h1 className="text-3xl font-bold text-black mb-8">
         Bem-vindo, {session?.user?.name}!
       </h1>
 
@@ -42,10 +42,10 @@ export default function DashboardPage() {
               href="/dashboard/driver/vehicles"
               className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow"
             >
-              <h2 className="text-xl font-semibold text-gray-900 mb-2">
+              <h2 className="text-xl font-semibold text-black mb-2">
                 Meus Veículos
               </h2>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Gerencie sua frota de veículos
               </p>
             </Link>
@@ -54,10 +54,10 @@ export default function DashboardPage() {
               href="/dashboard/driver/availabilities"
               className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow"
             >
-              <h2 className="text-xl font-semibold text-gray-900 mb-2">
+              <h2 className="text-xl font-semibold text-black mb-2">
                 Minhas Publicações
               </h2>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Gerencie suas disponibilidades de retorno
               </p>
             </Link>
@@ -69,10 +69,10 @@ export default function DashboardPage() {
             href="/dashboard/search"
             className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow"
           >
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">
+            <h2 className="text-xl font-semibold text-black mb-2">
               Buscar Fretes
             </h2>
-            <p className="text-gray-600">
+            <p className="text-black">
               Encontre fretes de retorno disponíveis
             </p>
           </Link>
@@ -82,10 +82,10 @@ export default function DashboardPage() {
           href="/dashboard/chats"
           className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow"
         >
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">
+          <h2 className="text-xl font-semibold text-black mb-2">
             Mensagens
           </h2>
-          <p className="text-gray-600">
+          <p className="text-black">
             Converse com motoristas ou clientes
           </p>
         </Link>

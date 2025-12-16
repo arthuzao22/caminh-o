@@ -57,11 +57,11 @@ export default function NewVehiclePage() {
 
   return (
     <div className="max-w-2xl mx-auto">
-      <h1 className="text-3xl font-bold text-gray-900 mb-8">Cadastrar Veículo</h1>
+      <h1 className="text-3xl font-bold text-black mb-8">Cadastrar Veículo</h1>
 
       <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow p-8 space-y-6">
         <div>
-          <label htmlFor="type" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="type" className="block text-sm font-medium text-black mb-2">
             Tipo de Veículo *
           </label>
           <select
