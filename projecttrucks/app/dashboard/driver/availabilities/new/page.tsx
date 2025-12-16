@@ -123,7 +123,7 @@ export default function NewAvailabilityPage() {
             required
             value={formData.vehicleId}
             onChange={(e) => handleVehicleChange(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-900"
           >
             {vehicles.map(vehicle => (
               <option key={vehicle.id} value={vehicle.id}>
@@ -144,7 +144,7 @@ export default function NewAvailabilityPage() {
               required
               value={formData.originCity}
               onChange={(e) => setFormData({ ...formData, originCity: e.target.value })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-900 placeholder:text-gray-400"
               placeholder="São Paulo"
             />
           </div>
@@ -160,7 +160,7 @@ export default function NewAvailabilityPage() {
               maxLength={2}
               value={formData.originState}
               onChange={(e) => setFormData({ ...formData, originState: e.target.value.toUpperCase() })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-900 placeholder:text-gray-400"
               placeholder="SP"
             />
           </div>
@@ -175,7 +175,7 @@ export default function NewAvailabilityPage() {
               required
               value={formData.destinationCity}
               onChange={(e) => setFormData({ ...formData, destinationCity: e.target.value })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-900 placeholder:text-gray-400"
               placeholder="Rio de Janeiro"
             />
           </div>
@@ -191,7 +191,7 @@ export default function NewAvailabilityPage() {
               maxLength={2}
               value={formData.destinationState}
               onChange={(e) => setFormData({ ...formData, destinationState: e.target.value.toUpperCase() })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-900 placeholder:text-gray-400"
               placeholder="RJ"
             />
           </div>
@@ -208,7 +208,7 @@ export default function NewAvailabilityPage() {
               required
               value={formData.availableDate}
               onChange={(e) => setFormData({ ...formData, availableDate: e.target.value })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-900 placeholder:text-gray-400"
             />
           </div>
 
@@ -224,7 +224,7 @@ export default function NewAvailabilityPage() {
               step={0.1}
               value={formData.availableCapacity}
               onChange={(e) => setFormData({ ...formData, availableCapacity: parseFloat(e.target.value) })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-900 placeholder:text-gray-400"
             />
           </div>
         </div>
@@ -239,7 +239,7 @@ export default function NewAvailabilityPage() {
             step={0.01}
             value={formData.priceEstimate}
             onChange={(e) => setFormData({ ...formData, priceEstimate: e.target.value })}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-900 placeholder:text-gray-400"
             placeholder="1500.00"
           />
         </div>
@@ -250,7 +250,7 @@ export default function NewAvailabilityPage() {
               type="checkbox"
               checked={formData.flexibleDates}
               onChange={(e) => setFormData({ ...formData, flexibleDates: e.target.checked })}
-              className="mr-2 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+              className="mr-2 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded accent-blue-600"
             />
             <span className="text-sm text-gray-700">Datas flexíveis</span>
           </label>
@@ -265,7 +265,7 @@ export default function NewAvailabilityPage() {
             rows={3}
             value={formData.description}
             onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-900 placeholder:text-gray-400"
             placeholder="Detalhes sobre a carga, requisitos especiais, etc."
           />
         </div>
@@ -279,7 +279,7 @@ export default function NewAvailabilityPage() {
             rows={2}
             value={formData.observations}
             onChange={(e) => setFormData({ ...formData, observations: e.target.value })}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-900 placeholder:text-gray-400"
             placeholder="Informações adicionais"
           />
         </div>

@@ -69,7 +69,7 @@ export default function NewVehiclePage() {
             required
             value={formData.type}
             onChange={(e) => setFormData({ ...formData, type: e.target.value as VehicleType })}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-900"
           >
             {VEHICLE_TYPE_OPTIONS.map(option => (
               <option key={option.value} value={option.value}>
@@ -90,7 +90,7 @@ export default function NewVehiclePage() {
               required
               value={formData.brand}
               onChange={(e) => setFormData({ ...formData, brand: e.target.value })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-900 placeholder:text-gray-400"
               placeholder="Ex: Scania, Mercedes, Volvo"
             />
           </div>
@@ -105,7 +105,7 @@ export default function NewVehiclePage() {
               required
               value={formData.model}
               onChange={(e) => setFormData({ ...formData, model: e.target.value })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-900 placeholder:text-gray-400"
               placeholder="Ex: R 450, Atego"
             />
           </div>
@@ -122,7 +122,7 @@ export default function NewVehiclePage() {
               max={new Date().getFullYear() + 1}
               value={formData.year}
               onChange={(e) => setFormData({ ...formData, year: parseInt(e.target.value) })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-900 placeholder:text-gray-400"
             />
           </div>
 
@@ -136,7 +136,7 @@ export default function NewVehiclePage() {
               required
               value={formData.plate}
               onChange={(e) => setFormData({ ...formData, plate: e.target.value.toUpperCase() })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-900 placeholder:text-gray-400"
               placeholder="ABC1D23"
             />
           </div>
@@ -154,7 +154,7 @@ export default function NewVehiclePage() {
             step={0.1}
             value={formData.capacity}
             onChange={(e) => setFormData({ ...formData, capacity: parseFloat(e.target.value) })}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-900 placeholder:text-gray-400"
             placeholder="Ex: 15.5"
           />
         </div>
@@ -168,7 +168,7 @@ export default function NewVehiclePage() {
             rows={4}
             value={formData.description}
             onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-900 placeholder:text-gray-400"
             placeholder="Informações adicionais sobre o veículo..."
           />
         </div>

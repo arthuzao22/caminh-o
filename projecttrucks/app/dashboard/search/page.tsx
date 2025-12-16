@@ -123,7 +123,7 @@ export default function SearchPage() {
               type="text"
               value={filters.originCity}
               onChange={(e) => setFilters({ ...filters, originCity: e.target.value })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-900 placeholder:text-gray-400"
               placeholder="São Paulo"
             />
           </div>
@@ -137,7 +137,7 @@ export default function SearchPage() {
               maxLength={2}
               value={filters.originState}
               onChange={(e) => setFilters({ ...filters, originState: e.target.value.toUpperCase() })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-900 placeholder:text-gray-400"
               placeholder="SP"
             />
           </div>
@@ -150,7 +150,7 @@ export default function SearchPage() {
               type="text"
               value={filters.destinationCity}
               onChange={(e) => setFilters({ ...filters, destinationCity: e.target.value })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-900 placeholder:text-gray-400"
               placeholder="Rio de Janeiro"
             />
           </div>
@@ -164,7 +164,7 @@ export default function SearchPage() {
               maxLength={2}
               value={filters.destinationState}
               onChange={(e) => setFilters({ ...filters, destinationState: e.target.value.toUpperCase() })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-900 placeholder:text-gray-400"
               placeholder="RJ"
             />
           </div>
@@ -177,7 +177,7 @@ export default function SearchPage() {
               type="date"
               value={filters.dateFrom}
               onChange={(e) => setFilters({ ...filters, dateFrom: e.target.value })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-900 placeholder:text-gray-400"
             />
           </div>
 
@@ -190,7 +190,7 @@ export default function SearchPage() {
               step={0.1}
               value={filters.minCapacity}
               onChange={(e) => setFilters({ ...filters, minCapacity: e.target.value })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-900 placeholder:text-gray-400"
               placeholder="10"
             />
           </div>
